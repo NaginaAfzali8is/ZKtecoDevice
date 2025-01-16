@@ -6,8 +6,31 @@ app = Flask(__name__)
 # Device configuration
 zk = ZK('192.168.50.96', port=4370, timeout=5)
 
+
+@app.route('/home', methods=['GET'])
+def home():
+    """Homepage route with device connection status."""
+    try:
+        # Attempt to connect to the device
+        conn = zk.connect()
+        conn.disconnect()
+        return jsonify({
+            'message': 'Welcome to the Biometric Device API!',
+            'device_status': 'Connected',
+            'device_ip': '192.168.50.96'
+        })
+    except Exception as e:
+        return jsonify({
+            'message': 'Welcome to the Biometric Device API!',
+            'device_status': 'Not Connected',
+            'device_ip': '192.168.50.96',
+            'error': str(e)
+        }), 500
+
+
 @app.route('/users', methods=['GET'])
 def get_users_with_attendance():
+    """Retrieve user details and attendance records."""
     try:
         # Connect to the device
         conn = zk.connect()
