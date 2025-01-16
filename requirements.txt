@@ -1,2 +1,2 @@
-flask
-pyzk
+Flask==3.1.0
+pyzk==0.9
