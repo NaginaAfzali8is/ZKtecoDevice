@@ -82,4 +82,4 @@ def get_users_with_attendance():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=9096, allow_unsafe_werkzeug=True)
