@@ -6,6 +6,14 @@ app = Flask(__name__)
 # Device configuration
 zk = ZK('192.168.50.96', port=4370, timeout=5)
 
+@app.route('/')
+def homeRoute():
+ # Return JSON response
+        return jsonify({
+            'status': 200,
+            'Connected': "Hello from ZKTeco"
+        })
+
 
 @app.route('/home', methods=['GET'])
 def home():
