@@ -19,7 +19,7 @@ def home():
     """Homepage route with device connection status."""
     try:
         # Device configuration
-        zk = ZK('192.168.50.96', port=4370, timeout=5)
+        zk = ZK('192.168.18.6', port=4370, timeout=5)
 
         # Attempt to connect to the device
         conn = zk.connect()
@@ -27,13 +27,13 @@ def home():
         return jsonify({
             'message': 'Welcome to the Biometric Device API!',
             'device_status': 'Connected',
-            'device_ip': '192.168.50.96'
+            'device_ip': '192.168.18.6'
         })
     except Exception as e:
         return jsonify({
             'message': 'Welcome to the Biometric Device API!',
             'device_status': 'Not Connected',
-            'device_ip': '192.168.50.96',
+            'device_ip': '192.168.18.6',
             'error': str(e)
         }), 500
 
@@ -43,7 +43,7 @@ def get_users_with_attendance():
     """Retrieve user details and attendance records."""
     try:
         # Device configuration
-        zk = ZK('192.168.50.96', port=4370, timeout=5)
+        zk = ZK('192.168.18.6', port=4370, timeout=5)
         # Connect to the device
         conn = zk.connect()
         print("Connected to the device")
