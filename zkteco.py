@@ -3,8 +3,7 @@ from zk import ZK
 
 app = Flask(__name__)
 
-# Device configuration
-zk = ZK('192.168.50.96', port=4370, timeout=5)
+
 
 @app.route('/')
 def homeRoute():
@@ -19,6 +18,9 @@ def homeRoute():
 def home():
     """Homepage route with device connection status."""
     try:
+        # Device configuration
+        zk = ZK('192.168.50.96', port=4370, timeout=5)
+
         # Attempt to connect to the device
         conn = zk.connect()
         conn.disconnect()
@@ -40,6 +42,8 @@ def home():
 def get_users_with_attendance():
     """Retrieve user details and attendance records."""
     try:
+        # Device configuration
+        zk = ZK('192.168.50.96', port=4370, timeout=5)
         # Connect to the device
         conn = zk.connect()
         print("Connected to the device")
@@ -82,4 +86,4 @@ def get_users_with_attendance():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=9096, allow_unsafe_werkzeug=True)
+    app.run(debug=True, port=9096)
