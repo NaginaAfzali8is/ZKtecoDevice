@@ -1,14 +1,14 @@
 {
     "builds": [
       {
-        "src": "run.py",
+        "src": "zkteco.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/.*",
-        "dest": "run.py"
+        "dest": "zkteco.py"
       }
     ]
   }
